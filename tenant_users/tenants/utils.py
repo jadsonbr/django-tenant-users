@@ -16,7 +16,7 @@ def get_current_tenant():
     tenant = TenantModel.objects.get(schema_name=current_schema)
     return tenant
 
-def create_public_tenant(domain_url, owner_email, username, paid_until, on_trial, **owner_extra):
+def create_public_tenant(domain_url, owner_email, username, **owner_extra):
     UserModel = get_user_model()
     TenantModel = get_tenant_model()
     public_schema_name = get_public_schema_name()
@@ -49,6 +49,8 @@ def create_public_tenant(domain_url, owner_email, username, paid_until, on_trial
             schema_name=public_schema_name,
             tenant_name=public_schema_name,
             slug='public',
+            paid_until='2099-12-25',
+            on_trial=False,
             name='Public Tenant',
             owner=profile,
         )
