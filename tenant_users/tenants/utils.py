@@ -48,7 +48,7 @@ def create_public_tenant(domain_url, owner_email, username, paid_until, on_trial
         public_tenant = TenantModel.objects.create(
             schema_name=public_schema_name,
             tenant_name=public_schema_name,
-            slug='public'
+            slug='public',
             name='Public Tenant',
             owner=profile,
         )
